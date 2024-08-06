@@ -54,7 +54,8 @@ void Calculator::process(const std::vector<long int> &eq)
         character = '+';
         break;
     case E_OPERATION_TYPE::SUB:
-        result = std::accumulate(eq.begin(),eq.end(),0,std::minus<long int>());
+        // result = std::accumulate(eq.begin(),eq.end(),0,std::minus<long int>());
+        result=[&]()->long int{auto out{eq[0]};for(int i=1;i<eq.size();++i){out-=eq[i];};return out;}();
         character = '-';
         break;
     case E_OPERATION_TYPE::MULTY:
